@@ -3,7 +3,6 @@ import logging
 import requests
 import json
 import time
-from parameters import DATA
 from concurrent.futures import ThreadPoolExecutor
 from threading import current_thread
 
@@ -155,6 +154,8 @@ class WQSession(requests.Session):
         return [sim for sim in data if sim not in self.rows_processed]
 
 if __name__ == '__main__':
+    from parameters import get_data
+    DATA = get_data()
     TOTAL_ROWS = len(DATA)
     while DATA:
         wq = WQSession()
